@@ -31,6 +31,14 @@
   <!-- =============== -->
   <!-- Javascript code -->
   <!-- =============== -->
+
+   <script type="text/template" id="item-template">
+    <div class="view">
+      <input class="toggle" type="checkbox">
+      <label><%- title %></label>
+    </div>
+  </script>
+
   <script type="text/javascript">
 
   var app = {};
@@ -49,20 +57,16 @@
 
   app.todoList = new app.TodoList();
 
-    //   var AppView = Backbone.View.extend({
-    //   el: $('#container'),
-    //   // template which has the placeholder 'who' to be substituted later
-    //   template: _.template("<h3>Hello <%= who%></h3>"),
-    //   initialize: function(){
-    //     this.render();
-    //   },
-    //   render: function(){
-    //     // render the function using substituting the variable 'who' for 'world!'.
-    //     this.$el.html(this.template({who: "Tarik!"}));
-    //     //*** Try putting your name instead of world.
-    //   }
-    // });
-    // var appView = new AppView();
+  // renders individual todo items list (li)
+  app.TodoView = Backbone.View.extend({
+    tagName: 'li',
+    template: _.template($('#item-template').html()),
+    render: function(){
+      this.$el.html(this.template(this.model.toJSON()));
+      return this; // enable chained calls
+    }
+  });
+
   </script>
 
 </body>
