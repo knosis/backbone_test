@@ -60,7 +60,26 @@
 
   <script type="text/javascript">
 
-  var app = {};
+  var app = {}; // create namespace
+
+  // ********
+  // Router
+  // ********
+
+  app.Router = Backbone.Router.extend({
+    routes: {
+      '*filter' : 'setFilter'
+    },
+    setFilter: function(params) {
+      console.log('app.router.params = ' + params);
+      window.filter = params.trim() || '';
+      app.todoList.trigger('reset');
+    }
+  });
+
+  // ********
+  // Models
+  // ********
 
   app.Todo = Backbone.Model.extend({
     defaults: {
@@ -69,16 +88,21 @@
     },
     toggle: function() {
       this.save({completed: !this.get('completed')});
-      }
     }
   });
+
+  // ********
+  // Collections
+  // ********
 
   app.TodoList = Backbone.Collection.extend({
     model: app.Todo,
     localStorage: new Store("backbone-todo")
   });
 
-  app.todoList = new app.TodoList();
+  // ********
+  // Views
+  // ********
 
   // renders individual todo items list (li)
   app.TodoView = Backbone.View.extend({
@@ -123,17 +147,18 @@
     }
   });
 
+  // Full Todo list view
+
   app.AppView = Backbone.View.extend({
     el: '#todoapp',
     initialize: function(){
       this.input = this.$('#new-todo');
-      // when new elements are added to the collection render them with addOne
-      app.todoList.on('add', this.addOne, this);
+      app.todoList.on('add', this.addOne, this); // renders one item at a time
       app.todoList.on('reset', this.addAll, this);
       app.todoList.fetch(); // Loads list from local storage
     },
     events: {
-      'keypress #new-todo': 'createTodoOnEnter'
+      'keypress #new-todo' : 'createTodoOnEnter'
     },
     createTodoOnEnter: function(e){
       if (e.which !== 13 || !this.input.val().trim()) { // ENTER_KEY = 13
@@ -148,7 +173,18 @@
     },
     addAll: function(){
       this.$('#todo-list').html(''); // clean todo list
-      app.todoList.each(this.addOne, this);
+      // filter todo item list
+      switch(window.filter){
+        case 'pending':
+          _.each(app.todoList.remaining(), this.addOne);
+          break;
+        case 'completed':
+          _.each(app.todoList.completed(), this.addOne);
+          break;
+        default:
+          app.todoList.each(this.addOne, this);
+          break;
+      }
     },
     newAttributes: function(){
       return {
@@ -162,6 +198,9 @@
   // Initializers
   // ---------
 
+  app.router = new app.Router();
+  app.todoList = new app.TodoList(); // collection instance
+  Backbone.history.start();
   app.appView = new app.AppView();
 
   </script>
