@@ -71,6 +71,7 @@
   // Router
   // ********
 
+(function() {
   app.Router = Backbone.Router.extend({
     routes: {
       '*filter' : 'setFilter'
@@ -207,6 +208,8 @@
     }
   });
 
+})();
+
   // ---------
   // Initializers
   // ---------
@@ -215,6 +218,7 @@
   app.todoList = new app.TodoList(); // collection instance
   Backbone.history.start();
   app.appView = new app.AppView();
+
 
   </script>
 
