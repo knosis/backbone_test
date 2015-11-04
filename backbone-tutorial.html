@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
   <title>Mobile To-Do List</title>
 </head>
 <body>
@@ -12,6 +13,154 @@
   <!-- ========= -->
 
   <style>
+    .clearfix:before, .clearfix:after, .dl-horizontal dd:before, .dl-horizontal dd:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after, .form-horizontal .form-group:before, .form-horizontal .form-group:after, .btn-toolbar:before, .btn-toolbar:after, .btn-group-vertical > .btn-group:before, .btn-group-vertical > .btn-group:after, .nav:before, .nav:after, .navbar:before, .navbar:after, .navbar-header:before, .navbar-header:after, .navbar-collapse:before, .navbar-collapse:after, .pager:before, .pager:after, .panel-body:before, .panel-body:after, .modal-footer:before, .modal-footer:after {
+      content: " ";
+      display: table;
+    }
+    .clearfix:after, .dl-horizontal dd:after, .container:after, .container-fluid:after, .row:after, .form-horizontal .form-group:after, .btn-toolbar:after, .btn-group-vertical > .btn-group:after, .nav:after, .navbar:after, .navbar-header:after, .navbar-collapse:after, .pager:after, .panel-body:after, .modal-footer:after {
+      clear: both;
+    }
+    *::before, *::after {
+      box-sizing: border-box;
+    }
+    *:before, *:after {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+    /* box-sizing: border-box; */
+    }
+    a {
+      font-family: "Open Sans", serif;
+    }
+    button, input, optgroup, select, textarea {
+      color: inherit;
+      font: inherit;
+      margin: 0;
+    }
+    button, select {
+      text-transform: none;
+    }
+    input, button {
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: .1px;
+    }
+    button {
+      overflow: visible;
+      overflow-x: visible;
+      overflow-y: visible;
+      -webkit-appearance: button;
+    }
+    .form-control {
+      display: block;
+      width: 100%;
+      height: 37px;
+      padding: 6px 16px;
+      font-size: 13px;
+      line-height: 1.846;
+      color: #666666;
+      background-color: transparent;
+      background-image: none;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+      -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+      transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+    input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+      align-items: flex-start;
+      text-align: center;
+      cursor: default;
+      color: buttontext;
+      padding: 2px 6px 3px;
+      border: 2px outset buttonface;
+      border-image-source: initial;
+      border-image-slice: initial;
+      border-image-width: initial;
+      border-image-outset: initial;
+      border-image-repeat: initial;
+      background-color: buttonface;
+      box-sizing: border-box;
+    }
+    input, textarea, keygen, select, button {
+      margin: 0em;
+      font: 11px BlinkMacSystemFont;
+      text-rendering: auto;
+      color: initial;
+      letter-spacing: normal;
+      word-spacing: normal;
+      text-transform: none;
+      text-indent: 0px;
+      text-shadow: none;
+      display: inline-block;
+      text-align: start;
+    }
+    input, textarea, keygen, select, button, meter, progress {
+      -webkit-writing-mode: horizontal-tb;
+    }
+    h1 {
+      font-size: 3em;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: lighter;
+    }
+    input[type="checkbox"]:after, .checkbox input[type="checkbox"]:after, .checkbox-inline input[type="checkbox"]:after {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 18px;
+      margin-top: -2px;
+      margin-right: 5px;
+      border: 2px solid #666666;
+      border-radius: 2px;
+      -webkit-transition: 240ms;
+      -o-transition: 240ms;
+      transition: 240ms;
+    }
+    label {
+      font-family: 'Open Sans', sans-serif;
+    }
+    li {
+      list-style-type: none;
+    }
+    media="screen"
+      textarea.input-lg, textarea.form-control.input-lg, input.form-control.input-lg, input[type=text].input-lg, input[type=password].input-lg, input[type=email].input-lg, input[type=number].input-lg, [type=text].form-control.input-lg, [type=password].form-control.input-lg, [type=email].form-control.input-lg, [type=tel].form-control.input-lg, [contenteditable].form-control.input-lg {
+      font-size: 17px;
+    }
+    input[type="checkbox"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+      position: relative;
+      border: none;
+      margin-bottom: -4px;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+    input[type="checkbox"]:checked:before, .checkbox input[type="checkbox"]:checked:before, .checkbox-inline input[type="checkbox"]:checked:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 6px;
+      display: table;
+      width: 6px;
+      height: 12px;
+      border: 2px solid #fff;
+      border-top-width: 0;
+      border-left-width: 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    input[type="checkbox"]:checked:after, .checkbox input[type="checkbox"]:checked:after, .checkbox-inline input[type="checkbox"]:checked:after {
+      background-color: #2196f3;
+      border-color: #2196f3;
+    }
+    .input-lg {
+      height: 45px;
+      padding: 10px 16px;
+      font-size: 17px;
+      line-height: 1.3333333;
+      border-radius: 3px;
+    }
     #todo-list input.edit {
       display: none; /* Hides input box*/
     }
@@ -22,28 +171,102 @@
       display: inline; /* Shows input text box when .editing*/
     }
     #todoapp {
-      margin: 0 auto;
-      text-align: center;
+      max-width: 462px;
+      margin: 40px auto;
+    }
+    #new-todo {
+      width: 25.000em;
+      height: 2.5em;
+    }
+    .alert-dismissable, .alert-dismissible {
+      padding-right: 35px;
     }
     .center {
       margin: 0 auto;
     }
-    h1 {
-      font-size: 48px;
-      font-family: arial;
-      font-weight: lighter;
+    .container {
+      margin-right: auto;
+      margin-left: auto;
+      padding-left: 15px;
+      padding-right: 15px;
     }
-    #new-todo {
-      width: 400px;
-      height: 40px;
+    button.close {
+      padding: 0;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      -webkit-appearance: none;
+    }
+    .close {
+      font-size: 24px;
+      float: right;
+      font-weight: 300;
+      line-height: 24px;
+      opacity: 0.2;
+      font-family: 'Open Sans', sans-serif;
+      -webkit-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s;
+    }
+    .close:hover {
+      opacity: 1;
     }
     .show-all-link {
-      margin-right: 110px;
-      width: 100px;
+      width: 5.1em;
     }
     .completed-link {
-      margin-left: 110px;
-      width: 100px;
+      width: 100%;
+    }
+    .table-of-contents {
+      margin-top: 1em;
+    }
+    .list-group {
+      margin-bottom: 20px;
+      padding-left: 0;
+    }
+    .list-group-item:first-child {
+      border-top-right-radius: 3px;
+      border-top-left-radius: 3px;
+    }
+    .list-group-item {
+      position: relative;
+      display: block;
+      padding: 15px;
+      margin-bottom: -1px;
+      background-color: #ffffff;
+      border: 1px solid #dddddd;
+      color: #555555;
+    }
+    .pull-right {
+      float: right !important;
+    }
+    .row {
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+    .col-md-3 {
+      width: 25%;
+    }
+    .col-lg-3 {
+      width: 25%;
+    }
+    .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+      position: relative;
+      min-height: 1px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    @media (min-width: 768px)
+    .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+      float: left;
+    }
+    @media (min-width: 768px)
+    .col-sm-4 {
+      width: 33.33333333%;
+    }
+    @media (min-width: 768px)
+    .container {
+      width: 750px;
     }
   </style>
 
@@ -52,17 +275,19 @@
   <!-- ========= -->
   <section id="todoapp">
     <header id="header">
-      <h1 class="center">To-Do List</h1>
-      <input id="new-todo" placeholder="What needs to be done?">
+      <h1>To-Do List</h1>
+      <input id="new-todo" class="form-control input-lg" placeholder="What needs to be done?">
       <div>
-        <a href="#/" class="show-all-link">show all</a> |
-<!--         <a href="#/pending">show pending</a> |
- -->    <a href="#/completed" class="completed-link">show completed</a>
+<!--         <a href="#/" class="show-all-link">show all</a> -->
       </div>
     </header>
     <section id="main">
-      <ul id="todo-list"></ul>
+      <div id="todo-list" class="list-group"></div>
     </section>
+    <div class="row">
+        <a href="#/pending" class="show-all-link pull-right">pending</a>
+      <a href="#/completed" class="col-md-2 col-md-offset-5">show completed</a><span class="badge"></span>
+    </div>
   </section>
 
 
@@ -80,10 +305,10 @@
 
   <script type="text/template" id="item-template">
     <div class="view center">
-      <input class="toggle" type="checkbox">
+      <input class="toggle checkbox" type="checkbox">
       <label><%- title %></label>
       <input class="edit" value="<%- title %>">
-      <button class="destroy">remove</button>
+      <button type="button" class="destroy close">x</button>
     </div>
   </script>
 
@@ -144,7 +369,7 @@
 
   // renders individual todo items list (li)
   app.TodoView = Backbone.View.extend({
-    tagName: 'li',
+    tagName: 'a',
     template: _.template($('#item-template').html()),
     render: function(){
       this.$el.html(this.template(this.model.toJSON()));
@@ -153,6 +378,9 @@
     intialize: function(){
       this.model.on('change', this.render, this);
       this.model.on('destroy', this.remove, this);
+    },
+    attributes: {
+      class: "list-group-item"
     },
     events: {
       'dblclick label' : 'edit',
